@@ -1,1 +1,34 @@
-Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int initialPosition;
+        string matchedKey = "";
+       for(int i=0;i< haystack.length() ;i++){
+           //append haystack latter to matchedKey
+           matchedKey += haystack[i];   
+           if(matchedKey.length() == needle.length()){
+                // check for equality only if the appended matchedKey equals needle and save the first  appearance index in initialPosition array
+                if(matchedKey == needle){     
+                    //geting the index of first occurrence of needle from haystack
+                        initialPosition = i - (needle.length() -1);      
+                        matchedKey = "";        //clearing matched key
+                        return initialPosition;
+                }
+                else if(matchedKey != needle && needle.length()==1){
+                        matchedKey = ""; 
+                        initialPosition = i;
+                }
+                else {
+                        matchedKey = haystack[i]; 
+                        initialPosition = i;
+                }
+                
+                
+           }
+        
+
+       } 
+        //printing output as index of occurrence or -1 if null
+       return -1;
+    }
+};
